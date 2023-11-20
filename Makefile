@@ -3,19 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rihoy   <rihoy@student.42.fr>              +#+  +:+       +#+         #
+#    By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/17 16:31:41 by rihoy             #+#    #+#              #
-#    Updated: 2023/11/17 16:31:41 by rihoy            ###   ########.fr        #
+#    Created: 2023/11/16 14:31:46 by rihoy             #+#    #+#              #
+#    Updated: 2023/11/20 08:23:47 by rihoy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = 
+SRCS = ft_printf.c ft_print_digit.c ft_print_carac.c ft_utils.c \
 
-OBJS = 
+OBJS = ${SRCS:.c=.o}
 
+FLAGS = -Wall -Werror -Wextra -I
 CC = cc
-FLAGS = -Wall -Werror -Wextra
-NAME = libftprintf_r.a
+RM = rm -f
+NAME = ft_printf.a
 
+all : ${NAME}
 
+${NAME} : ${OBJS}
+	ar rc ${NAME} ${OBJS}
+
+clean :
+	${RM} ${OBJS} ${BONUS_OBJS}
+
+fclean :
+	${RM} ${NAME}
+
+re : fclean ${NAME}
