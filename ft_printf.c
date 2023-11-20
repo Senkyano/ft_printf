@@ -5,60 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 06:48:54 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/20 08:58:48 by rihoy            ###   ########.fr       */
+/*   Created: 2023/11/20 09:07:29 by rihoy             #+#    #+#             */
+/*   Updated: 2023/11/20 12:16:09 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_printf(const char *str, ...)
 {
 	int		length;
 	va_list	args;
 
-	va_start(args, str);
 	length = 0;
+	va_start(args, str);
 	while (*str != '\0')
 	{
-		if (*str == '%' && same_letter(str[1], "cspdiuxX%") == 1)
+		if (*str == '%' && ft_strcharcmp(str[1], "cspdiuxX%") == 1)
 		{
-			length += length_output(str[1], args);
+			length += ft_output(str[1], args, length);
 			str += 2;
 		}
 		else
 		{
-			print_char(*str);
+			ft_print_char(*str);
 			length++;
-			str++;z
+			str++;
 		}
 	}
-	va_end(args);
 	return (length);
 }
 
-int	length_output(char c, va_list args)
+int	ft_output(char c, va_list args, int length)
 {
-	int	length;
+	char	*tmp;
 
-	length = 0;
 	if (c == 'c')
-		length = print_char(va_arg(args, int));
+		length = ft_print_char(va_arg(args, int));
 	else if (c == 's')
-		length = print_str(va_arg(args, char *));
+	{
+		tmp = va_arg(args, char *);
+		if (tmp == NULL)
+			return (ft_print_str("(null)"));
+		else
+			return (ft_print_str(tmp));
+	}
 	else if (c == 'p')
-		length += print_adr(va_arg(args, uintptr_t), "0123456789abcdef");
-	else if (c == 'd')
-		length = print_base(va_arg(args, int), "0123456789");
-	else if (c == 'i')
-		length = print_base(va_arg(args, int), "0123456789");
+		length = ft_addr(va_arg(args, uintptr_t), "0123456789abcdef");
+	else if (c == 'd' || c == 'i')
+		length = ft_nbr(va_arg(args, int));
 	else if (c == 'u')
-		length = print_unsnumber(va_arg(args, unsigned int));
+		length = ft_unnbr(va_arg(args, unsigned int));
 	else if (c == 'x')
-		length = print_base(va_arg(args, int), "0123456789abcdef");
+		length = ft_nbhexa(va_arg(args, unsigned int), "0123456789abcdef");
 	else if (c == 'X')
-		length = print_base(va_arg(args, int), "0123456789ABCDEF");
+		length = ft_nbhexa(va_arg(args, unsigned int), "0123456789ABCDEF");
 	else
-		length = print_percent();
+		length = ft_print_char('%');
 	return (length);
 }

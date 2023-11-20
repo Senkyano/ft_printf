@@ -5,44 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 08:14:54 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/20 08:47:59 by rihoy            ###   ########.fr       */
+/*   Created: 2023/11/20 09:30:37 by rihoy             #+#    #+#             */
+/*   Updated: 2023/11/20 12:22:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int	cible(char c, const char *base)
+int	ft_strcharcmp(char c, const char *cmp)
 {
-	int	i;
-
-	i = 0;
-	while (base[i] != '\0')
+	while (*cmp != '\0')
 	{
-		if (c == base[i])
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int	same_letter(char c, const char *str)
-{
-	while (*str != '\0')
-	{
-		if (*str == c)
+		if (c == *cmp)
 			return (1);
-		str++;
+		cmp++;
 	}
 	return (0);
 }
 
-int	ft_strlen(const char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (*str)
+	{
+		str++;
 		i++;
+	}
 	return (i);
+}
+
+size_t	ft_lenhexa(unsigned int n, char *base)
+{
+	size_t	length;
+	size_t	lenbase;
+
+	lenbase = ft_strlen(base);
+	length = 0;
+	if (n == 0)
+		return (1);
+	while (n > 0)
+	{
+		n /= lenbase;
+		length++;
+	}
+	return (length);
+}
+
+size_t	ft_lenaddr(uintptr_t ptr, char *base)
+{
+	size_t	length;
+	size_t	lenbase;
+
+	lenbase = ft_strlen(base);
+	length = 0;
+	while (ptr > 0)
+	{
+		ptr /= lenbase;
+		length++;
+	}
+	return (length);
 }
