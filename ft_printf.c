@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:07:29 by rihoy             #+#    #+#             */
-/*   Updated: 2023/12/12 17:34:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:57:27 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_printf(const char *str, ...)
 		{
 			error = ft_output(str[1], args, length);
 			if (error == -1)
-				return (1);
+				return (-1);
 			length += error;
 			str += 2;
 		}
@@ -57,9 +57,9 @@ int	ft_output(char c, va_list args, int length)
 		length = ft_nbhexa(va_arg(args, unsigned int), "0123456789abcdef");
 	else if (c == 'X')
 		length = ft_nbhexa(va_arg(args, unsigned int), "0123456789ABCDEF");
-	else
+	else if (c == '%')
 		length = ft_print_char('%');
-	if (length == 0)
+	else
 		return (-1);
 	return (length);
 }
