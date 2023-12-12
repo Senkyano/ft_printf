@@ -6,11 +6,11 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:13:51 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/20 12:08:10 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:12:48 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_print_char(unsigned char c)
 {
@@ -22,6 +22,8 @@ int	ft_print_str(char *str)
 {
 	int	length;
 
+	if (str == NULL)
+		return (ft_print_str("null"));
 	length = 0;
 	while (str[length])
 		length += ft_print_char(str[length]);

@@ -6,11 +6,11 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:10:39 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/20 12:17:27 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/12/12 17:34:15 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_nbhexa(unsigned int n, char *base)
 {
@@ -43,7 +43,7 @@ int	ft_addr(uintptr_t ptr, char *base)
 	int		lenbase;
 
 	if (ptr == 0)
-		return (ft_print_str("(nil)"));	
+		return (ft_print_str("(nil)"));
 	lenaddr = ft_lenaddr(ptr, base) + 2;
 	lenbase = ft_strlen(base);
 	addr = malloc((lenaddr + 1) * sizeof(char));

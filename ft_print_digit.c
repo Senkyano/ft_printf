@@ -6,11 +6,11 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:56:34 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/20 12:20:21 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/11/28 13:16:28 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_nbr(int n)
 {

@@ -6,7 +6,7 @@
 #    By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 14:31:46 by rihoy             #+#    #+#              #
-#    Updated: 2023/11/20 12:01:13 by rihoy            ###   ########.fr        #
+#    Updated: 2023/12/12 17:19:33 by rihoy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ ${NAME} : ${OBJS}
 clean :
 	${RM} ${OBJS}
 
-fclean :
+fclean : clean
 	${RM} ${NAME}
 
 re : fclean ${NAME}
