@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:10:39 by rihoy             #+#    #+#             */
-/*   Updated: 2023/12/12 17:34:15 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/12/12 19:32:26 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_nbhexa(unsigned int n, char *base)
 	lenbase = ft_strlen(base);
 	nbrhexa = malloc((lenhexa + 1) * sizeof(char));
 	if (!nbrhexa)
-		return (0);
+		return (-1);
 	nbrhexa[lenhexa] = '\0';
 	lenhexa--;
 	while (n > lenbase - 1)
@@ -48,7 +48,7 @@ int	ft_addr(uintptr_t ptr, char *base)
 	lenbase = ft_strlen(base);
 	addr = malloc((lenaddr + 1) * sizeof(char));
 	if (!addr)
-		return (0);
+		return (-1);
 	addr[lenaddr] = '\0';
 	lenaddr--;
 	addr[0] = '0';
